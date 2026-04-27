@@ -1,6 +1,6 @@
 import React from 'react';
 
-// –?nh nghia ki?u d? li?u cho m?t d? ·n (TypeScript Interface)
+// √ê?nh nghia ki?u d? li?u cho m?t d? √°n (TypeScript Interface)
 interface Project {
   id: number;
   title: string;
@@ -10,46 +10,46 @@ interface Project {
 }
 
 const ProjectPage: React.FC = () => {
-  // Khi b?n cÛ ?nh, h„y thay c·c thÙng tin v‡o m?ng n‡y
+  // Khi b?n c√≥ ?nh, h√£y thay c√°c th√¥ng tin v√†o m?ng n√†y
   const projectsData: Project[] = [
     {
       id: 1,
-      title: "Ch? t·c Bi?u tu?ng Inox V‡ng",
-      category: "D? ·n TiÍu bi?u",
+      title: "Ch? t√°c Bi?u tu?ng Inox V√†ng",
+      category: "D? √°n Ti√™u bi?u",
       imageUrl: "PLACEHOLDER_IMAGE_URL_1",
-      description: "Gia cÙng ch? n?i Inox v‡ng guong 304, d? tinh x?o tuy?t d?i cho s?nh chÌnh t?p do‡n."
+      description: "Gia c√¥ng ch? n?i Inox v√†ng guong 304, d? tinh x?o tuy?t d?i cho s?nh ch√≠nh t?p do√†n."
     },
-    // ... ThÍm c·c d? ·n kh·c ? d‚y
+    // ... Th√™m c√°c d? √°n kh√°c ? d√¢y
   ];
 
   return (
     <div className="min-h-screen bg-[#0a0a0a] text-white font-sans selection:bg-yellow-500/30">
       
-      {/* 1. Header tinh gi?n theo phong c·ch Luxury */}
+      {/* 1. Header tinh gi?n theo phong c√°ch Luxury */}
       <nav className="fixed w-full z-50 border-b border-white/5 bg-black/90 backdrop-blur-md px-10 py-5 flex justify-between items-center">
         <div className="text-2xl font-serif tracking-widest text-[#d4af37]">KIEN AN AD</div>
         <div className="hidden lg:flex space-x-12 text-[10px] uppercase tracking-[0.3em] font-light">
           <a href="/" className="hover:text-[#d4af37] transition">Trang ch?</a>
-          <a href="#services" className="hover:text-[#d4af37] transition">D?ch v? ch? t·c</a>
-          <a href="#projects" className="text-[#d4af37]">D?u ?n cÙng trÏnh</a>
-          <a href="#contact" className="hover:text-[#d4af37] transition">LiÍn h?</a>
+          <a href="#services" className="hover:text-[#d4af37] transition">D?ch v? ch? t√°c</a>
+          <a href="#projects" className="text-[#d4af37]">D?u ?n c√¥ng tr√¨nh</a>
+          <a href="#contact" className="hover:text-[#d4af37] transition">Li√™n h?</a>
         </div>
       </nav>
 
-      {/* 2. Hero Section cho ph?n D? ·n */}
+      {/* 2. Hero Section cho ph?n D? √°n */}
       <section className="pt-40 pb-20 px-10 text-center">
         <h1 className="text-[12px] uppercase tracking-[0.5em] text-yellow-600 mb-4">Portfolio</h1>
-        <h2 className="font-serif text-5xl md:text-6xl mb-8 italic">D?u ?n CÙng TrÏnh</h2>
+        <h2 className="font-serif text-5xl md:text-6xl mb-8 italic">D?u ?n C√¥ng Tr√¨nh</h2>
         <div className="w-24 h-[1px] bg-yellow-700 mx-auto"></div>
       </section>
 
-      {/* 3. PH?N D? ¡N TI U BI?U (Noi b?n s? thay hÏnh) */}
+      {/* 3. PH?N D? √ÅN TI√äU BI?U (Noi b?n s? thay h√¨nh) */}
       <section id="projects" className="px-10 pb-32 max-w-[1600px] mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
           {projectsData.length > 0 ? (
             projectsData.map((project) => (
               <div key={project.id} className="group cursor-pointer">
-                {/* Khung ch?a ?nh d? ·n */}
+                {/* Khung ch?a ?nh d? √°n */}
                 <div className="relative aspect-[16/10] overflow-hidden bg-zinc-900 border border-white/5">
                   <img 
                     src={project.imageUrl} 
@@ -59,7 +59,7 @@ const ProjectPage: React.FC = () => {
                   <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors"></div>
                 </div>
                 
-                {/* ThÙng tin d? ·n */}
+                {/* Th√¥ng tin d? √°n */}
                 <div className="mt-8">
                   <span className="text-[10px] uppercase tracking-widest text-zinc-500">{project.category}</span>
                   <h3 className="text-2xl font-serif mt-2 group-hover:text-[#d4af37] transition-colors">{project.title}</h3>
@@ -70,30 +70,30 @@ const ProjectPage: React.FC = () => {
               </div>
             ))
           ) : (
-            // Tr?ng th·i ch? ?nh t? b?n
+            // Tr?ng th√°i ch? ?nh t? b?n
             <div className="col-span-full py-40 border border-dashed border-zinc-800 text-center">
               <p className="text-zinc-600 italic tracking-widest uppercase text-sm">
-                –ang d?i d? li?u hÏnh ?nh d? ·n t? b?n...
+                √êang d?i d? li?u h√¨nh ?nh d? √°n t? b?n...
               </p>
             </div>
           )}
         </div>
       </section>
 
-      {/* 4. Footer TÙn NghiÍm */}
+      {/* 4. Footer T√¥n Nghi√™m */}
       <footer className="border-t border-white/5 py-20 px-10 bg-black">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 text-sm font-light text-zinc-500">
           <div>
-            <h4 className="text-white mb-6 uppercase tracking-widest">Van phÚng d?i di?n</h4>
-            <p>30/12 –u?ng DX01, T‚n Vinh Hi?p, T‚n Kh·nh, TPHCM</p>
+            <h4 className="text-white mb-6 uppercase tracking-widest">Van ph√≤ng d?i di?n</h4>
+            <p>30/12 √êu?ng DX01, T√¢n Vinh Hi?p, T√¢n Kh√°nh, TPHCM</p>
           </div>
           <div>
-            <h4 className="text-white mb-6 uppercase tracking-widest">LiÍn h? tr?c ti?p</h4>
+            <h4 className="text-white mb-6 uppercase tracking-widest">Li√™n h? tr?c ti?p</h4>
             <p className="text-[#d4af37] text-lg font-medium">0904 747 398</p>
             <p>kd.kienan@gmail.com</p>
           </div>
           <div className="text-right">
-            <p>© 2026 Kien An Advertising Luxury</p>
+            <p>¬© 2026 Kien An Advertising Luxury</p>
             <p className="mt-2 italic">Ki?n t?o di s?n thuong hi?u</p>
           </div>
         </div>
