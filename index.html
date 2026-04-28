@@ -3,184 +3,188 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quảng Cáo 24H - Thi Công Bảng Hiệu Chuyên Nghiệp</title>
+    <title>Công Ty Quảng Cáo 24H - Chất Lượng Tạo Nên Giá Trị</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
-        .parallax-bg {
-            background-image: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), 
-                              url('https://inanquangcaobinhduong.net/upload/hinhanh/z26194783457597f1f4175510629ec49a15a81e7f603c4-9543.jpg');
+        body { font-family: 'Roboto', sans-serif; }
+        .font-gold { font-family: 'Playfair Display', serif; color: #c5a059; }
+        .bg-red-main { background-color: #e31e24; }
+        .bg-red-dark { background-color: #ba1a1f; }
+        .parallax-section {
+            background: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.85)), url('https://inanquangcaobinhduong.net/upload/hinhanh/z26194783457597f1f4175510629ec49a15a81e7f603c4-9543.jpg');
             background-attachment: fixed;
             background-size: cover;
-            background-position: center;
         }
-        .text-gold { color: #d4af37; }
-        .bg-gold { background-color: #d4af37; }
-        .border-gold { border-color: #d4af37; }
-        html { scroll-behavior: smooth; }
+        .nav-link:hover { color: #e31e24; }
+        .diamond-logo {
+            clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+            background: white;
+            padding: 20px;
+        }
+        .sidebar-btn {
+            width: 45px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            margin-bottom: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+        }
     </style>
 </head>
-<body class="bg-white text-gray-800 font-sans">
+<body class="bg-[#f2f2f2]">
 
-    <header class="py-3 px-6 border-b sticky top-0 bg-white z-50 shadow-md">
-        <div class="container mx-auto flex justify-between items-center">
-            <div class="flex items-center space-x-4">
-                <img src="qc24h.jpg" class="h-16 w-auto border-2 border-red-600 rounded shadow-md" alt="Logo">
-                <div>
-                    <h1 class="text-red-700 font-bold text-xs uppercase leading-tight">Công Ty TNHH MTV DVTM Quảng Cáo</h1>
-                    <h2 class="text-xl md:text-2xl font-black uppercase tracking-tighter text-gray-900">QUẢNG CÁO 24H</h2>
-                </div>
+    <header class="bg-white border-b sticky top-0 z-[100]">
+        <div class="container mx-auto flex justify-between items-center h-16 px-4">
+            <div class="flex items-center">
+                <img src="qc24h.jpg" class="h-12 border p-1" alt="Logo">
             </div>
-            <nav class="hidden lg:flex space-x-6 font-bold text-xs uppercase text-gray-600">
-                <a href="#" class="text-red-700 border-b-2 border-red-700 pb-1">Trang chủ</a>
-                <a href="#gioi-thieu" class="hover:text-red-700 transition">Giới thiệu</a>
-                <a href="#dich-vu" class="hover:text-red-700 transition">Dịch vụ</a>
-                <a href="#du-an" class="hover:text-red-700 transition">Dự án</a>
-                <a href="tel:0904747398" class="bg-red-700 text-white px-4 py-2 rounded-full animate-pulse">0904.747.398</a>
+            <nav class="hidden lg:flex items-center h-full">
+                <a href="#" class="h-full px-4 flex items-center bg-red-main text-white text-xs font-bold uppercase">Trang chủ</a>
+                <a href="#" class="h-full px-4 flex items-center text-xs font-bold uppercase nav-link transition">Giới thiệu</a>
+                <a href="#" class="h-full px-4 flex items-center text-xs font-bold uppercase nav-link transition">Sản phẩm</a>
+                <a href="#" class="h-full px-4 flex items-center text-xs font-bold uppercase nav-link transition">Dịch vụ</a>
+                <a href="#" class="h-full px-4 flex items-center text-xs font-bold uppercase nav-link transition">Tin tức</a>
+                <a href="#" class="h-full px-4 flex items-center text-xs font-bold uppercase nav-link transition">Dự án</a>
+                <a href="#" class="h-full px-4 flex items-center text-xs font-bold uppercase nav-link transition">Tuyển dụng</a>
+                <a href="#" class="h-full px-4 flex items-center text-xs font-bold uppercase nav-link transition">Liên hệ</a>
+                <div class="px-4 text-gray-400 cursor-pointer"><i class="fa fa-search"></i></div>
             </nav>
         </div>
     </header>
 
-    <section class="parallax-bg text-white py-32 px-4 text-center">
-        <div class="container mx-auto border-[6px] border-gold py-20 px-6 relative animate__animated animate__fadeIn">
-            <h2 class="text-5xl md:text-8xl font-black text-gold mb-6 uppercase tracking-tighter italic">QUẢNG CÁO 24H</h2>
-            <p class="text-4xl md:text-6xl font-bold mb-10 italic">090.47.47.398</p>
-            <div class="w-32 h-1.5 bg-gold mx-auto mb-10"></div>
-            <p class="text-lg md:text-2xl uppercase tracking-[0.3em] font-semibold leading-relaxed">
-                THI CÔNG BẢNG HIỆU - TRANG TRÍ VĂN PHÒNG<br>
-                <span class="text-gold italic font-black mt-4 block text-2xl md:text-4xl uppercase">GIA CÔNG: CHỮ INOX - MICA - LASER - CNC</span>
-            </p>
+    <section class="parallax-section py-16 text-center text-white relative border-b-4 border-red-main">
+        <div class="container mx-auto flex flex-col md:flex-row items-center justify-center gap-12">
+            <div class="relative">
+                <div class="diamond-logo w-48 h-48 flex items-center justify-center border-4 border-[#c5a059]">
+                    <img src="qc24h.jpg" class="w-32" alt="Logo Diamond">
+                </div>
+            </div>
+
+            <div class="space-y-4">
+                <h1 class="text-4xl md:text-7xl font-gold uppercase tracking-tighter">CÔNG TY QUẢNG CÁO 24H</h1>
+                <p class="text-xl md:text-3xl italic font-light tracking-widest">Chất Lượng Tạo Nên Giá Trị</p>
+                <div class="pt-4">
+                    <p class="text-5xl md:text-7xl font-gold font-bold tracking-tight">091.99.18.528</p>
+                    <p class="text-lg md:text-xl font-medium tracking-widest mt-2">kd.quangcao24h@gmail.com</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="absolute right-0 top-1/2 -translate-y-1/2 bg-white text-red-main px-1 py-4 rounded-l-md font-bold uppercase text-[10px] [writing-mode:vertical-lr] shadow-md">
+            FANPAGE
         </div>
     </section>
 
-    <section id="gioi-thieu" class="py-20 px-4 bg-white container mx-auto max-w-6xl">
-        <div class="grid md:grid-cols-2 gap-12 items-center mb-20">
-            <div class="space-y-6">
-                <h3 class="text-4xl font-black text-gray-900 uppercase border-l-8 border-red-700 pl-4">VỀ CHÚNG TÔI</h3>
-                <p class="text-xl italic text-gray-700 leading-relaxed text-justify">
-                    <strong>Quảng Cáo 24H</strong> tự hào là đối tác tin cậy của hàng trăm doanh nghiệp tại Bình Dương. Chúng tôi sở hữu hệ thống máy móc hiện đại: Máy cắt Laser Fiber, máy CNC, máy uốn chữ chân nhôm tự động... đảm bảo độ chính xác tuyệt đối trên từng sản phẩm.
-                </p>
-                <div class="grid grid-cols-2 gap-4 pt-4">
-                    <div class="text-center p-4 bg-gray-50 rounded">
-                        <span class="block text-3xl font-black text-red-700">10+</span>
-                        <span class="text-xs font-bold uppercase">Năm kinh nghiệm</span>
-                    </div>
-                    <div class="text-center p-4 bg-gray-50 rounded">
-                        <span class="block text-3xl font-black text-red-700">1000+</span>
-                        <span class="text-xs font-bold uppercase">Dự án hoàn thành</span>
-                    </div>
+    <section class="bg-red-main py-4 text-white">
+        <div class="container mx-auto grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-white/20">
+            <div class="flex items-center justify-center py-2 space-x-4">
+                <i class="fa fa-phone-alt text-3xl"></i>
+                <div class="text-left leading-tight">
+                    <span class="text-[10px] uppercase block opacity-80">Hotline tư vấn:</span>
+                    <span class="text-xl font-bold tracking-wider">0919918528</span>
                 </div>
             </div>
-            <div class="bg-gray-50 p-8 border-2 border-gray-200 shadow-xl rounded-xl">
-                <h4 class="text-xl font-black text-blue-900 uppercase mb-6 italic underline decoration-red-700 text-center">Thế mạnh nổi bật</h4>
-                <ul class="space-y-4 font-bold text-base text-gray-800 uppercase">
-                    <li class="flex items-center"><i class="fa fa-check-square text-red-700 mr-3 text-xl"></i> Đúng kỹ thuật kỹ thuật</li>
-                    <li class="flex items-center"><i class="fa fa-check-square text-red-700 mr-3 text-xl"></i> Đúng tiến độ cam kết</li>
-                    <li class="flex items-center"><i class="fa fa-check-square text-red-700 mr-3 text-xl"></i> Thẩm mỹ tinh tế</li>
-                    <li class="flex items-center"><i class="fa fa-check-square text-red-700 mr-3 text-xl"></i> Giá thành cạnh tranh</li>
+            <div class="flex items-center justify-center py-2 space-x-4">
+                <i class="fa fa-envelope text-3xl"></i>
+                <div class="text-left leading-tight">
+                    <span class="text-[10px] uppercase block opacity-80">Email:</span>
+                    <span class="text-lg font-bold">kd.quangcao24h@gmail.com</span>
+                </div>
+            </div>
+            <div class="flex items-center justify-center py-2 space-x-4">
+                <i class="fab fa-skype text-4xl"></i>
+                <div class="text-left leading-tight">
+                    <span class="text-[10px] uppercase block opacity-80">Skype:</span>
+                    <span class="text-lg font-bold uppercase">Quangcao24h</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-16 px-4">
+        <div class="container mx-auto text-center">
+            <h2 class="text-2xl font-bold uppercase tracking-widest mb-10 border-b-2 border-gray-300 inline-block pb-2">Giới thiệu</h2>
+            <div class="max-w-4xl mx-auto space-y-6">
+                <h3 class="text-3xl font-black text-[#f28e16] uppercase">CÔNG TY QUẢNG CÁO 24H</h3>
+                <p class="text-xl font-bold text-[#f28e16] uppercase tracking-tighter">WWW.QUANGCAO24HBINHHDUONG.COM</p>
+                
+                <div class="relative bg-black rounded-lg overflow-hidden shadow-2xl border-8 border-white group">
+                    <img src="https://inanquangcaobinhduong.net/upload/hinhanh/z25514081604128549925698b71946897c8d085600b46d-9614.jpg" class="w-full opacity-60 group-hover:scale-105 transition duration-700">
+                    <div class="absolute inset-0 flex items-center justify-center">
+                        <div class="w-20 h-20 bg-red-main rounded-full flex items-center justify-center text-white text-3xl cursor-pointer animate-pulse">
+                            <i class="fa fa-play ml-1"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <p class="text-gray-700 leading-relaxed text-justify mt-8 italic">
+                    Quảng Cáo 24H chuyên nhận thiết kế thi công các loại bảng hiệu quảng cáo, gia công chữ nổi inox, mica, alu, hộp đèn led, mặt dựng alu công trình chuyên nghiệp tại Bình Dương và các tỉnh lân cận...
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-16 bg-white shadow-inner">
+        <div class="container mx-auto px-4 grid md:grid-cols-2 gap-12">
+            <div>
+                <h3 class="text-xl font-black border-l-4 border-red-main pl-4 mb-6 uppercase">Dịch vụ trọng tâm</h3>
+                <ul class="space-y-4">
+                    <li class="flex items-start space-x-3">
+                        <i class="fa fa-check-circle text-green-600 mt-1"></i>
+                        <span>Gia công chữ Inox vàng, trắng, gương 304 không gỉ.</span>
+                    </li>
+                    <li class="flex items-start space-x-3">
+                        <i class="fa fa-check-circle text-green-600 mt-1"></i>
+                        <span>Thi công bảng hiệu Alu mờ, Alu gương, bảng hiệu bạt Hiflex.</span>
+                    </li>
+                    <li class="flex items-start space-x-3">
+                        <i class="fa fa-check-circle text-green-600 mt-1"></i>
+                        <span>Thiết kế thi công màn hình Led, bảng Led vẫy chuyên nghiệp.</span>
+                    </li>
                 </ul>
             </div>
-        </div>
-    </section>
-
-    <section id="dich-vu" class="py-20 bg-gray-50">
-        <div class="container mx-auto px-4 text-center">
-            <h3 class="text-3xl font-black uppercase mb-12 italic border-b-4 border-red-700 inline-block pb-2">DỊCH VỤ CỦA CHÚNG TÔI</h3>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="bg-white p-8 shadow-lg hover:-translate-y-2 transition duration-300">
-                    <i class="fa fa-layer-group text-5xl text-red-700 mb-6"></i>
-                    <h4 class="font-black mb-4 uppercase">Chữ Nổi Inox - Mica</h4>
-                    <p class="text-sm text-gray-600">Gia công uốn nổi chữ inox vàng gương, inox trắng, mica hút nổi chuyên nghiệp.</p>
-                </div>
-                <div class="bg-white p-8 shadow-lg hover:-translate-y-2 transition duration-300">
-                    <i class="fa fa-tv text-5xl text-red-700 mb-6"></i>
-                    <h4 class="font-black mb-4 uppercase">Bảng Hiệu Led</h4>
-                    <p class="text-sm text-gray-600">Thi công màn hình Led, bảng điện tử, Led vẫy, Led ma trận chất lượng cao.</p>
-                </div>
-                <div class="bg-white p-8 shadow-lg hover:-translate-y-2 transition duration-300">
-                    <i class="fa fa-cut text-5xl text-red-700 mb-6"></i>
-                    <h4 class="font-black mb-4 uppercase">Cắt Laser - CNC</h4>
-                    <p class="text-sm text-gray-600">Gia công cắt kim loại tấm, gỗ, nhựa mica theo yêu cầu bản vẽ kỹ thuật.</p>
-                </div>
-                <div class="bg-white p-8 shadow-lg hover:-translate-y-2 transition duration-300">
-                    <i class="fa fa-store text-5xl text-red-700 mb-6"></i>
-                    <h4 class="font-black mb-4 uppercase">Mặt Dựng Alu</h4>
-                    <p class="text-sm text-gray-600">Thi công ốp mặt dựng Alu tòa nhà, cửa hàng, showroom bằng vật liệu cao cấp.</p>
-                </div>
-                <div class="bg-white p-8 shadow-lg hover:-translate-y-2 transition duration-300">
-                    <i class="fa fa-id-card text-5xl text-red-700 mb-6"></i>
-                    <h4 class="font-black mb-4 uppercase">Tem Nhãn Kim Loại</h4>
-                    <p class="text-sm text-gray-600">Sản xuất tem Inox ăn mòn, tem nhôm định hình cho máy móc và thiết bị.</p>
-                </div>
-                <div class="bg-white p-8 shadow-lg hover:-translate-y-2 transition duration-300">
-                    <i class="fa fa-paint-roller text-5xl text-red-700 mb-6"></i>
-                    <h4 class="font-black mb-4 uppercase">Trang Trí Nội Thất</h4>
-                    <p class="text-sm text-gray-600">Thiết kế thi công vách ngăn CNC, tranh đèn led, trang trí văn phòng hiện đại.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="du-an" class="py-20 container mx-auto px-4">
-        <h3 class="text-3xl font-black uppercase text-center mb-16 italic">HÌNH ẢNH THỰC TẾ</h3>
-        <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
-            <div class="overflow-hidden group relative">
-                <img src="https://inanquangcaobinhduong.net/upload/sanpham/z25514122116039922c19e53069176378c3b179090623a-7360.jpg" class="w-full h-64 object-cover group-hover:scale-110 transition duration-500">
-                <div class="absolute inset-0 bg-red-700/80 opacity-0 group-hover:opacity-100 transition flex items-center justify-center text-white font-bold uppercase p-4 text-center">Chữ Inox KUKJIN VINA</div>
-            </div>
-            <div class="overflow-hidden group relative">
-                <img src="https://inanquangcaobinhduong.net/upload/sanpham/z25514081604128549925698b71946897c8d085600b46d-9614.jpg" class="w-full h-64 object-cover group-hover:scale-110 transition duration-500">
-                <div class="absolute inset-0 bg-red-700/80 opacity-0 group-hover:opacity-100 transition flex items-center justify-center text-white font-bold uppercase p-4 text-center">Gia Công Chữ Vsip 2</div>
-            </div>
-            <div class="overflow-hidden group relative">
-                <img src="https://inanquangcaobinhduong.net/upload/sanpham/z2551405072049e75df6992d9478f773467c6999201538-4841.jpg" class="w-full h-64 object-cover group-hover:scale-110 transition duration-500">
-                <div class="absolute inset-0 bg-red-700/80 opacity-0 group-hover:opacity-100 transition flex items-center justify-center text-white font-bold uppercase p-4 text-center">Trường THCS An Lập</div>
-            </div>
-            <div class="overflow-hidden group relative">
-                <img src="https://inanquangcaobinhduong.net/upload/sanpham/z255140228303494e8a1d7f6c382281898b04a8c3d7904-7473.jpg" class="w-full h-64 object-cover group-hover:scale-110 transition duration-500">
-                <div class="absolute inset-0 bg-red-700/80 opacity-0 group-hover:opacity-100 transition flex items-center justify-center text-white font-bold uppercase p-4 text-center">KCN Nam Tân Uyên</div>
-            </div>
-        </div>
-    </section>
-
-    <footer class="bg-[#111] text-white pt-20 pb-10 border-t-8 border-red-700">
-        <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-16">
-            <div>
-                <img src="qc24h.jpg" class="h-16 w-auto mb-6 border border-gold shadow-lg" alt="Logo">
-                <h4 class="font-black text-gold uppercase text-2xl mb-6 tracking-tighter italic">QUẢNG CÁO 24H</h4>
-                <div class="space-y-4 font-bold text-sm uppercase italic">
-                    <p><i class="fa fa-phone text-gold mr-3"></i> Hotline: 0904.747.398</p>
-                    <p><i class="fa fa-envelope text-gold mr-3"></i> Email: kd.quangcao24h@gmail.com</p>
-                    <p class="text-gray-400 normal-case font-normal text-xs leading-relaxed italic">Văn phòng: 30/12 Đường DX01, Khu phố Tân Vĩnh Hiệp, Phường Tân Vĩnh Hiệp, Thành phố Tân Uyên, Tỉnh Bình Dương.</p>
-                </div>
-            </div>
-            <div>
-                <h4 class="font-black mb-8 uppercase text-gold italic border-b border-gray-800 pb-2 inline-block">BẢN ĐỒ VỊ TRÍ</h4>
-                <div class="h-56 rounded-lg overflow-hidden border-2 border-gray-800 grayscale hover:grayscale-0 transition duration-1000 shadow-2xl">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3916.324!2d106.711!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTPCsDQ5JzI2LjQiTiAxMDbCsDQyJzM5LjYiRQ!5e0!3m2!1svi!2s!4v1620000000000!5m2!1svi!2s" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-                </div>
-            </div>
-            <div class="flex flex-col justify-between md:items-end text-center md:text-right">
-                <div>
-                    <h4 class="font-black text-gold uppercase mb-6 italic underline underline-offset-8 decoration-red-700">KẾT NỐI VỚI CHÚNG TÔI</h4>
-                    <div class="flex space-x-6 text-4xl text-gold justify-center md:justify-end">
-                        <a href="#" class="hover:text-white transition"><i class="fab fa-facebook-square"></i></a>
-                        <a href="#" class="hover:text-white transition"><i class="fab fa-youtube"></i></a>
-                        <a href="#" class="hover:text-white transition"><i class="fa fa-envelope"></i></a>
+            <div class="bg-gray-50 p-6 rounded-lg border-2 border-dashed border-gray-300">
+                <h3 class="text-xl font-black text-center mb-6 uppercase">Tại sao chọn chúng tôi?</h3>
+                <div class="grid grid-cols-2 gap-4 text-center">
+                    <div>
+                        <i class="fa fa-tools text-3xl text-red-main mb-2"></i>
+                        <p class="text-[10px] font-bold uppercase">Kỹ thuật cao</p>
+                    </div>
+                    <div>
+                        <i class="fa fa-clock text-3xl text-red-main mb-2"></i>
+                        <p class="text-[10px] font-bold uppercase">Đúng tiến độ</p>
                     </div>
                 </div>
-                <div class="mt-12">
-                    <p class="text-[11px] text-gray-500 uppercase font-black tracking-widest">© 2026 BY QUẢNG CÁO 24H. ALL RIGHTS RESERVED.</p>
-                    <p class="text-gold italic font-black mt-2 uppercase border-r-4 border-red-700 pr-3 inline-block">Dẫn đầu giải pháp quảng cáo</p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-red-dark py-12 text-white border-t-4 border-[#c5a059]">
+        <div class="container mx-auto px-4 grid md:grid-cols-3 gap-12">
+            <div class="text-center md:text-left">
+                <img src="qc24h.jpg" class="h-16 border-2 border-white mb-4 inline-block md:block" alt="Footer Logo">
+                <h4 class="font-bold text-lg uppercase mb-4">Quảng Cáo 24H</h4>
+                <p class="text-sm opacity-80 italic">Chuyên nghiệp - Tận tâm - Sáng tạo</p>
+            </div>
+            <div>
+                <h4 class="font-bold uppercase border-b border-white/20 pb-2 mb-4">Thông tin liên hệ</h4>
+                <ul class="text-sm space-y-3">
+                    <li><i class="fa fa-map-marker-alt mr-2"></i>phường đông gia nghĩa, tỉnh lâm đồng</li>
+                    <li><i class="fa fa-phone-alt mr-2"></i> 091.99.18.528</li>
+                    <li><i class="fa fa-globe mr-2"></i>chưa mua tên miền</li>
+                </ul>
+            </div>
+            <div class="text-center md:text-right flex flex-col justify-between">
+                <div class="flex justify-center md:justify-end space-x-4 text-2xl mb-8">
+                    <i class="fab fa-facebook-f"></i>
+                    <i class="fab fa-youtube"></i>
+                    <i class="fa fa-envelope"></i>
                 </div>
+                <p class="text-[10px] opacity-60">© 2026 QUẢNG CÁO 24H. Design by Team.</p>
             </div>
         </div>
     </footer>
-
-    <a href="tel:0904747398" class="fixed right-8 bottom-8 w-16 h-16 bg-red-700 text-white rounded-full flex items-center justify-center shadow-2xl border-4 border-white animate-bounce z-[100] text-3xl">
-        <i class="fa fa-phone"></i>
-    </a>
-
-</body>
-</html>
