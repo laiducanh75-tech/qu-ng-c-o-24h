@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quảng Cáo 24H — Kiến Tạo Biểu Tượng, Khẳng Định Vị Thế</title>
+    <meta name="description" content="Công ty TNHH MTV DVTM SX Quảng Cáo 24H — chuyên gia công chữ Inox, bảng hiệu, mặt dựng Alu, hộp đèn LED và nhận diện công trình cao cấp.">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
@@ -12,6 +13,7 @@
         :root {
             --gold: #c9a25c;
             --gold-bright: #e8c886;
+            --gold-deep: #a07f3f;
             --ink: #0b0b0d;
             --ink-soft: #14141a;
             --ink-line: #2a2a32;
@@ -39,7 +41,7 @@
             background:
                 radial-gradient(1200px 600px at 50% -10%, rgba(201,162,92,0.18), transparent 60%),
                 linear-gradient(rgba(5,5,7,0.86), rgba(5,5,7,0.94)),
-                url('https://images.unsplash.com/photo-1487958449943-2429e8be8625?auto=format&fit=crop&w=1920&q=80');
+                url('images/qc24h.jpg');
             background-size: cover; background-position: center;
         }
 
@@ -82,13 +84,125 @@
             box-shadow: 0 30px 60px -30px rgba(201,162,92,0.25);
         }
 
-        .project-card { position: relative; overflow: hidden; border: 1px solid var(--ink-line); }
-        .project-card img { transition: transform 1.2s ease; }
-        .project-card:hover img { transform: scale(1.08); }
-        .project-card .veil {
-            position: absolute; inset: 0;
-            background: linear-gradient(180deg, transparent 40%, rgba(5,5,7,0.92) 100%);
+        /* Product gallery */
+        .product-card {
+            position: relative; overflow: hidden;
+            border: 1px solid var(--ink-line);
+            background: #0d0d11;
+            cursor: pointer;
+            transition: border-color .5s ease, transform .5s ease, box-shadow .5s ease;
         }
+        .product-card:hover {
+            border-color: var(--gold);
+            transform: translateY(-3px);
+            box-shadow: 0 30px 60px -30px rgba(201,162,92,0.35);
+        }
+        .product-card .img-wrap { aspect-ratio: 4/3; overflow: hidden; background: #000; }
+        .product-card img { width: 100%; height: 100%; object-fit: cover; transition: transform 1.2s ease; }
+        .product-card:hover img { transform: scale(1.06); }
+        .product-card .corner-tag {
+            position: absolute; top: 14px; left: 14px;
+            background: rgba(11,11,13,0.75);
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            padding: 4px 12px;
+            font-size: .65rem; letter-spacing: .3em; text-transform: uppercase;
+            backdrop-filter: blur(4px);
+        }
+        .product-card .view-icon {
+            position: absolute; top: 14px; right: 14px;
+            width: 38px; height: 38px;
+            background: rgba(11,11,13,0.75);
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            display: flex; align-items: center; justify-content: center;
+            transition: background .3s, color .3s;
+            backdrop-filter: blur(4px);
+        }
+        .product-card:hover .view-icon { background: var(--gold); color: var(--ink); }
+        .product-card .meta { padding: 22px 24px; border-top: 1px solid var(--ink-line); }
+        .product-card .meta h5 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.4rem; color: var(--gold); margin-bottom: 4px;
+            transition: color .3s;
+        }
+        .product-card .meta p { color: #8b867b; font-size: .82rem; line-height: 1.5; }
+
+        .tab-btn {
+            padding: 10px 22px;
+            border: 1px solid var(--ink-line);
+            color: #b6b1a4;
+            font-size: .72rem; letter-spacing: .25em; text-transform: uppercase;
+            background: transparent;
+            transition: all .35s ease;
+            cursor: pointer;
+            white-space: nowrap;
+        }
+        .tab-btn:hover { color: var(--gold); border-color: var(--gold); }
+        .tab-btn.active { background: var(--gold); color: var(--ink); border-color: var(--gold); }
+
+        /* Lightbox modal */
+        .lightbox {
+            position: fixed; inset: 0; z-index: 10000;
+            background: rgba(5,5,7,0.92);
+            backdrop-filter: blur(8px);
+            display: none;
+            align-items: center; justify-content: center;
+            padding: 20px;
+            opacity: 0;
+            transition: opacity .3s ease;
+        }
+        .lightbox.open { display: flex; opacity: 1; }
+        .lightbox-inner {
+            background: var(--ink-soft);
+            border: 1px solid var(--gold);
+            max-width: 1100px; width: 100%;
+            max-height: 92vh;
+            display: grid; grid-template-columns: 1.4fr 1fr;
+            position: relative;
+            overflow: hidden;
+        }
+        @media (max-width: 768px) {
+            .lightbox-inner { grid-template-columns: 1fr; max-height: 96vh; overflow-y: auto; }
+        }
+        .lightbox-image {
+            background: #000;
+            display: flex; align-items: center; justify-content: center;
+            min-height: 320px;
+            max-height: 92vh;
+        }
+        .lightbox-image img { width: 100%; height: 100%; object-fit: contain; max-height: 92vh; }
+        .lightbox-content { padding: 40px; overflow-y: auto; }
+        .lightbox-close {
+            position: absolute; top: 14px; right: 14px;
+            width: 42px; height: 42px;
+            background: rgba(11,11,13,0.85);
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            display: flex; align-items: center; justify-content: center;
+            cursor: pointer;
+            transition: background .25s, color .25s;
+            z-index: 5;
+        }
+        .lightbox-close:hover { background: var(--gold); color: var(--ink); }
+        .lightbox-nav {
+            position: absolute; top: 50%; transform: translateY(-50%);
+            width: 46px; height: 46px;
+            background: rgba(11,11,13,0.85);
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            display: flex; align-items: center; justify-content: center;
+            cursor: pointer;
+            transition: background .25s, color .25s;
+            z-index: 5;
+        }
+        .lightbox-nav:hover { background: var(--gold); color: var(--ink); }
+        .lightbox-nav.prev { left: 14px; }
+        .lightbox-nav.next { left: calc(58.3% - 60px); }
+        @media (max-width: 768px) {
+            .lightbox-nav.next { left: auto; right: 14px; }
+        }
+        body.lock { overflow: hidden; }
 
         .top-bar a:hover { color: var(--gold-bright); }
         .nav-link {
@@ -136,6 +250,19 @@
 
         .footer-link { transition: color .3s, padding-left .3s; }
         .footer-link:hover { color: var(--gold-bright); padding-left: 6px; }
+
+        /* Marquee logos */
+        .partner-strip {
+            display: flex; align-items: center; gap: 60px;
+            color: #5a5a5a; font-family: 'Cormorant Garamond', serif;
+            font-size: 1.6rem; letter-spacing: .15em;
+            opacity: .8;
+        }
+        .partner-strip span { white-space: nowrap; }
+
+        /* Fade-in */
+        .fade-in { opacity: 0; transform: translateY(24px); transition: opacity .8s ease, transform .8s ease; }
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
     </style>
 </head>
 <body class="bg-ink">
@@ -168,18 +295,20 @@
                 <a href="#" class="nav-link active">Trang chủ</a>
                 <a href="#gioi-thieu" class="nav-link">Giới thiệu</a>
                 <a href="#dich-vu" class="nav-link">Dịch vụ</a>
+                <a href="#san-pham" class="nav-link">Sản phẩm</a>
                 <a href="#du-an" class="nav-link">Dự án</a>
                 <a href="#lien-he" class="nav-link">Liên hệ</a>
             </nav>
             <a href="#lien-he" class="hidden md:inline-flex pill-btn">Báo giá riêng</a>
         </div>
     </header>
-                     <p class="section-eyebrow mb-6">Công ty TNHH MTV DVTM SX Quảng Cáo 24H</p>
-                     <h2 class="font-serif text-5xl md:text-7xl text-gold mb-6 tracking-tight">Kiến Tạo Biểu Tượng <br class="hidden md:block"/> Khẳng Định Vị Thế</h2>
-                     <div class="gold-divider mb-8 text-[10px] tracking-[0.5em] uppercase">Trang Trọng · Bền Bỉ · Tinh Xảo</div>
+
+    <!-- Hero -->
     <section class="hero py-32 md:py-44 text-center text-white border-b border-ink-line">
         <div class="container mx-auto px-6">
-            
+            <p class="section-eyebrow mb-6">Công ty TNHH MTV DVTM SX Quảng Cáo 24H</p>
+            <h2 class="font-serif text-5xl md:text-7xl text-gold mb-6 tracking-tight">Kiến Tạo Biểu Tượng <br class="hidden md:block"/> Khẳng Định Vị Thế</h2>
+            <div class="gold-divider mb-8 text-[10px] tracking-[0.5em] uppercase">Trang Trọng · Bền Bỉ · Tinh Xảo</div>
             <p class="max-w-2xl mx-auto text-stone-300 leading-relaxed text-[15px] mb-12">
                 Quảng Cáo 24H đồng hành cùng các tập đoàn, cơ quan và thương hiệu hàng đầu trong việc
                 kiến tạo nhận diện công trình — nơi từng đường nét đều mang theo sự tôn nghiêm và giá trị trường tồn.
@@ -190,7 +319,7 @@
                 <p class="text-stone-300 tracking-[0.25em] uppercase text-xs">24hgroup.net@gmail.com</p>
             </div>
             <div class="mt-12 flex flex-wrap justify-center gap-5">
-                <a href="#dich-vu" class="pill-btn">Khám phá dịch vụ</a>
+                <a href="#san-pham" class="pill-btn">Khám phá sản phẩm</a>
                 <a href="#du-an" class="pill-btn" style="border-color:#444;color:#ddd;">Xem dự án tiêu biểu</a>
             </div>
         </div>
@@ -209,7 +338,7 @@
     <!-- Giới thiệu -->
     <section id="gioi-thieu" class="py-24 border-b border-ink-line">
         <div class="container mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
-            <div>
+            <div class="fade-in">
                 <p class="section-eyebrow mb-4">— Câu Chuyện Thương Hiệu</p>
                 <h3 class="section-title mb-8">Một Đơn Vị Tận Hiến<br/>Cho Sự Trường Tồn Của Biểu Tượng</h3>
                 <div class="space-y-5 text-stone-400 leading-relaxed text-[15px]">
@@ -234,11 +363,9 @@
                     <div class="flex items-start gap-3"><i class="fa fa-handshake text-gold text-xl mt-1"></i><div><p class="text-gold font-semibold text-sm">Tận tâm</p><p class="text-stone-500 text-xs">Đồng hành 24/7</p></div></div>
                 </div>
             </div>
-            <div class="relative">
+            <div class="relative fade-in">
                 <div class="border border-gold p-3">
-                    <img src="https://images.unsplash.com/photo-1503551723145-6c040742065b-v2?auto=format&fit=crop&w=900&q=80"
-                         onerror="this.src='https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=900&q=80'"
-                         class="w-full h-[520px] object-cover" alt="Xưởng gia công">
+                    <img src="images/qc24h.jpg" class="w-full h-[520px] object-cover" alt="Xưởng gia công Quảng Cáo 24H">
                 </div>
                 <div class="absolute -bottom-8 -left-8 bg-ink-soft border border-gold p-6 hidden md:block">
                     <p class="font-serif text-gold text-4xl">Est. 2015</p>
@@ -251,39 +378,39 @@
     <!-- Dịch vụ -->
     <section id="dich-vu" class="py-24 bg-ink-soft border-b border-ink-line">
         <div class="container mx-auto px-6">
-            <div class="text-center mb-16">
+            <div class="text-center mb-16 fade-in">
                 <p class="section-eyebrow mb-4">— Dịch Vụ Chuyên Sâu</p>
                 <h3 class="section-title">Những Hạng Mục Tinh Hoa</h3>
                 <div class="gold-divider mt-6 text-[10px] tracking-[0.5em] uppercase">Crafted with Precision</div>
             </div>
 
             <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="service-card p-10">
+                <div class="service-card p-10 fade-in">
                     <i class="fa fa-font text-gold text-3xl mb-6"></i>
-                  h4 class="font-serif text-2xl text-gold mb-3">Kiến Tạo</h4>
+                    <h4 class="font-serif text-2xl text-gold mb-3">Chữ Inox Kiến Tạo</h4>
                     <p class="text-stone-400 text-sm leading-relaxed">Gia công chữ Inox vàng gương, Inox xước nguyên khối — đường gấp sắc, mạch hàn ẩn, đảm bảo độ tôn nghiêm cho mặt tiền doanh nghiệp.</p>
                 </div>
-                <div class="service-card p-10">
+                <div class="service-card p-10 fade-in">
                     <i class="fa fa-id-card text-gold text-3xl mb-6"></i>
                     <h4 class="font-serif text-2xl text-gold mb-3">Tem Nhãn Kim Loại</h4>
                     <p class="text-stone-400 text-sm leading-relaxed">Ăn mòn, in UV và khắc Laser trên kim loại quý — phục vụ định danh máy móc, tủ điện và trang thiết bị công nghiệp đạt chuẩn.</p>
                 </div>
-                <div class="service-card p-10">
+                <div class="service-card p-10 fade-in">
                     <i class="fa fa-building text-gold text-3xl mb-6"></i>
                     <h4 class="font-serif text-2xl text-gold mb-3">Mặt Dựng Alu &amp; Composite</h4>
                     <p class="text-stone-400 text-sm leading-relaxed">Thi công mặt dựng quy mô lớn cho cao ốc, showroom và khối nhà xưởng — chuẩn xác từng cạnh ron, bền vững với mọi thời tiết.</p>
                 </div>
-                <div class="service-card p-10">
+                <div class="service-card p-10 fade-in">
                     <i class="fa fa-lightbulb text-gold text-3xl mb-6"></i>
                     <h4 class="font-serif text-2xl text-gold mb-3">Hộp Đèn LED Mỹ Thuật</h4>
                     <p class="text-stone-400 text-sm leading-relaxed">Hệ thống chiếu sáng nội — ngoại thất với module LED nhập khẩu, tản nhiệt tối ưu, ánh sáng đồng đều, vận hành liên tục bền bỉ.</p>
                 </div>
-                <div class="service-card p-10">
+                <div class="service-card p-10 fade-in">
                     <i class="fa fa-bolt text-gold text-3xl mb-6"></i>
                     <h4 class="font-serif text-2xl text-gold mb-3">Cắt Laser &amp; Fiber</h4>
                     <p class="text-stone-400 text-sm leading-relaxed">Hệ máy Fiber công suất lớn cắt được Inox dày, đường viền mịn như đúc — phục vụ kiến trúc, nội thất và quà tặng doanh nghiệp.</p>
                 </div>
-                <div class="service-card p-10">
+                <div class="service-card p-10 fade-in">
                     <i class="fa fa-palette text-gold text-3xl mb-6"></i>
                     <h4 class="font-serif text-2xl text-gold mb-3">Nhận Diện Hội Chợ &amp; Sự Kiện</h4>
                     <p class="text-stone-400 text-sm leading-relaxed">Trang trí gian hàng, sảnh đón khách và hội nghị — đồng bộ với cẩm nang nhận diện, sang trọng đúng tầm tổ chức.</p>
@@ -292,61 +419,84 @@
         </div>
     </section>
 
-    <!-- Dự án -->
-    <section id="du-an" class="py-24 border-b border-ink-line">
+    <!-- Sản phẩm -->
+    <section id="san-pham" class="py-24 border-b border-ink-line">
         <div class="container mx-auto px-6">
-            <div class="text-center mb-16">
-                <p class="section-eyebrow mb-4">— Dấu Ấn Công Trình</p>
+            <div class="text-center mb-12 fade-in">
+                <p class="section-eyebrow mb-4">— Bộ Sưu Tập Công Trình</p>
+                <h3 class="section-title">Sản Phẩm Tiêu Biểu</h3>
+                <p class="text-stone-500 mt-5 max-w-2xl mx-auto italic font-serif text-lg">"Mỗi công trình là một dấu ấn — bấm vào để khám phá chi tiết."</p>
+                <div class="gold-divider mt-6 text-[10px] tracking-[0.5em] uppercase">Tap to View · Crafted in Detail</div>
+            </div>
+
+            <!-- Tabs -->
+            <div class="flex flex-wrap justify-center gap-3 mb-14 fade-in" id="product-tabs">
+                <button class="tab-btn active" data-cat="all">Tất cả</button>
+                <button class="tab-btn" data-cat="vien-thong">Tập đoàn Viễn thông</button>
+                <button class="tab-btn" data-cat="hanh-chinh">Cơ quan Hành chính</button>
+                <button class="tab-btn" data-cat="cong-nghiep">Doanh nghiệp Công nghiệp</button>
+                <button class="tab-btn" data-cat="thuong-mai">Thương mại &amp; Logistic</button>
+                <button class="tab-btn" data-cat="truyen-thong">Truyền thông &amp; Sự kiện</button>
+            </div>
+
+            <!-- Grid -->
+            <div id="product-grid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Cards injected by JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Dự án (showcase strip) -->
+    <section id="du-an" class="py-24 bg-ink-soft border-b border-ink-line">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16 fade-in">
+                <p class="section-eyebrow mb-4">— Dấu Ấn Tiêu Biểu</p>
                 <h3 class="section-title">Những Thương Hiệu Đã Tin Cậy</h3>
                 <p class="text-stone-500 mt-5 max-w-2xl mx-auto italic font-serif text-lg">"Kiến tạo biểu tượng — Khẳng định vị thế trường tồn."</p>
             </div>
 
-            <div class="grid md:grid-cols-2 lg:grid-cols-2 gap-8">
-                <article class="project-card group">
-                    <div class="h-80 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1100&q=80" class="w-full h-full object-cover" alt="Pano Tầm cỡ">
+            <div class="grid md:grid-cols-2 gap-8">
+                <article class="product-card group fade-in" onclick="openLightbox('vnpt-dn')">
+                    <div class="img-wrap" style="aspect-ratio: 16/10;">
+                        <img src="images/vnpt-dak-nong.jpg" alt="VNPT Đắk Nông">
                     </div>
-                    <div class="veil"></div>
-                    <div class="absolute bottom-0 left-0 right-0 p-8">
-                        <p class="section-eyebrow mb-2">Pano Tầm Cỡ</p>
-                        <h5 class="font-serif text-2xl text-gold mb-2">Thép Sài Gòn &amp; Tôn Nam Kim</h5>
-                        <p class="text-stone-300 text-sm">Thi công biển tấm lớn với kết cấu thép bền bỉ, khẳng định quy mô tập đoàn công nghiệp.</p>
-                    </div>
-                </article>
-
-                <article class="project-card group">
-                    <div class="h-80 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1516259762381-22954d7d3ad2?auto=format&fit=crop&w=1100&q=80" class="w-full h-full object-cover" alt="VNPT Vinaphone">
-                    </div>
-                    <div class="veil"></div>
-                    <div class="absolute bottom-0 left-0 right-0 p-8">
-                        <p class="section-eyebrow mb-2">Nhận Diện Quốc Gia</p>
-                        <h5 class="font-serif text-2xl text-gold mb-2">VNPT &amp; Vinaphone</h5>
-                        <p class="text-stone-300 text-sm">Chữ nổi quy mô lớn và hệ thống biển hiệu đồng bộ, đảm bảo tính tôn nghiêm chuẩn nhận diện quốc gia.</p>
+                    <span class="corner-tag">Nhận Diện Quốc Gia</span>
+                    <div class="meta">
+                        <h5>VNPT &amp; Vinaphone</h5>
+                        <p>Chữ nổi quy mô lớn và hệ thống biển hiệu đồng bộ cho mạng lưới viễn thông toàn tỉnh.</p>
                     </div>
                 </article>
 
-                <article class="project-card group">
-                    <div class="h-80 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?auto=format&fit=crop&w=1100&q=80" class="w-full h-full object-cover" alt="GHN Logistics">
+                <article class="product-card group fade-in" onclick="openLightbox('thep')">
+                    <div class="img-wrap" style="aspect-ratio: 16/10;">
+                        <img src="images/thep-sai-gon.jpg" alt="Thép Sài Gòn">
                     </div>
-                    <div class="veil"></div>
-                    <div class="absolute bottom-0 left-0 right-0 p-8">
-                        <p class="section-eyebrow mb-2">Hệ Thống Logistic</p>
-                        <h5 class="font-serif text-2xl text-gold mb-2">Giao Hàng Nhanh (GHN)</h5>
-                        <p class="text-stone-300 text-sm">Đồng bộ hóa hình ảnh bưu cục toàn quốc, tối ưu độ hiển thị và bền bỉ trong mọi điều kiện.</p>
+                    <span class="corner-tag">Pano Tầm Cỡ</span>
+                    <div class="meta">
+                        <h5>Thép Sài Gòn</h5>
+                        <p>Pano kết cấu thép bền bỉ, khẳng định quy mô tập đoàn công nghiệp.</p>
                     </div>
                 </article>
 
-                <article class="project-card group">
-                    <div class="h-80 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1577415124269-fc1140a69e91?auto=format&fit=crop&w=1100&q=80" class="w-full h-full object-cover" alt="Cơ quan Hành chính">
+                <article class="product-card group fade-in" onclick="openLightbox('ghn')">
+                    <div class="img-wrap" style="aspect-ratio: 16/10;">
+                        <img src="images/ghn.jpg" alt="GHN Logistics">
                     </div>
-                    <div class="veil"></div>
-                    <div class="absolute bottom-0 left-0 right-0 p-8">
-                        <p class="section-eyebrow mb-2">Cơ Quan Hành Chính</p>
-                        <h5 class="font-serif text-2xl text-gold mb-2">Bệnh Viện &amp; Cơ Quan Sự Nghiệp</h5>
-                        <p class="text-stone-300 text-sm">Gia công tinh xảo cho các đơn vị quân sự, bệnh viện và cơ quan chính phủ, đề cao sự trang trọng tuyệt đối.</p>
+                    <span class="corner-tag">Hệ Thống Logistic</span>
+                    <div class="meta">
+                        <h5>Giao Hàng Nhanh (GHN)</h5>
+                        <p>Đồng bộ hóa hình ảnh bưu cục, tối ưu độ hiển thị và bền bỉ trong mọi điều kiện.</p>
+                    </div>
+                </article>
+
+                <article class="product-card group fade-in" onclick="openLightbox('benh-vien')">
+                    <div class="img-wrap" style="aspect-ratio: 16/10;">
+                        <img src="images/benh-vien-da-khoa.jpg" alt="Bệnh viện Đa khoa">
+                    </div>
+                    <span class="corner-tag">Cơ Quan Sự Nghiệp</span>
+                    <div class="meta">
+                        <h5>Bệnh Viện Đa Khoa Tỉnh</h5>
+                        <p>Gia công tinh xảo cho các đơn vị y tế và cơ quan chính phủ — đề cao sự trang trọng.</p>
                     </div>
                 </article>
             </div>
@@ -354,8 +504,8 @@
     </section>
 
     <!-- Quote / philosophy -->
-    <section class="py-24 bg-ink-soft border-b border-ink-line">
-        <div class="container mx-auto px-6 max-w-4xl text-center">
+    <section class="py-24 border-b border-ink-line">
+        <div class="container mx-auto px-6 max-w-4xl text-center fade-in">
             <div class="quote-mark">“</div>
             <p class="font-serif text-2xl md:text-3xl text-stone-200 leading-relaxed -mt-10">
                 Chúng tôi không xây dựng những công trình quảng cáo. <br/>
@@ -367,9 +517,9 @@
     </section>
 
     <!-- Liên hệ / CTA -->
-    <section id="lien-he" class="py-24 border-b border-ink-line">
+    <section id="lien-he" class="py-24 bg-ink-soft border-b border-ink-line">
         <div class="container mx-auto px-6 grid md:grid-cols-2 gap-16">
-            <div>
+            <div class="fade-in">
                 <p class="section-eyebrow mb-4">— Liên Hệ Riêng</p>
                 <h3 class="section-title mb-6">Khởi Đầu Một Công Trình Xứng Tầm</h3>
                 <p class="text-stone-400 leading-relaxed mb-10 max-w-md">
@@ -409,7 +559,7 @@
                 </div>
             </div>
 
-            <form class="bg-ink-soft border border-ink-line p-10" onsubmit="event.preventDefault(); alert('Cảm ơn Quý khách. Quảng Cáo 24H sẽ liên hệ trong thời gian sớm nhất.');">
+            <form class="bg-ink border border-ink-line p-10 fade-in" onsubmit="event.preventDefault(); alert('Cảm ơn Quý khách. Quảng Cáo 24H sẽ liên hệ trong thời gian sớm nhất.');">
                 <p class="section-eyebrow mb-2">Yêu Cầu Báo Giá</p>
                 <h4 class="font-serif text-3xl text-gold mb-8">Gửi Thông Tin</h4>
                 <div class="space-y-5">
@@ -447,9 +597,9 @@
                     <ul class="space-y-3 text-sm">
                         <li><a href="#gioi-thieu" class="footer-link inline-block">Giới thiệu</a></li>
                         <li><a href="#dich-vu" class="footer-link inline-block">Dịch vụ</a></li>
+                        <li><a href="#san-pham" class="footer-link inline-block">Sản phẩm</a></li>
                         <li><a href="#du-an" class="footer-link inline-block">Dự án tiêu biểu</a></li>
                         <li><a href="#lien-he" class="footer-link inline-block">Liên hệ báo giá</a></li>
-                        <li><a href="#" class="footer-link inline-block">Chính sách bảo hành</a></li>
                     </ul>
                 </div>
 
@@ -477,6 +627,335 @@
         <a href="tel:0919918528" title="Gọi ngay"><i class="fa fa-phone"></i></a>
         <a href="mailto:24hgroup.net@gmail.com" title="Email"><i class="fa fa-envelope"></i></a>
     </div>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-hidden="true">
+        <div class="lightbox-inner">
+            <button class="lightbox-close" onclick="closeLightbox()" aria-label="Đóng"><i class="fa fa-times"></i></button>
+            <button class="lightbox-nav prev" onclick="navLightbox(-1)" aria-label="Trước"><i class="fa fa-chevron-left"></i></button>
+            <button class="lightbox-nav next" onclick="navLightbox(1)" aria-label="Sau"><i class="fa fa-chevron-right"></i></button>
+            <div class="lightbox-image">
+                <img id="lb-image" src="" alt="">
+            </div>
+            <div class="lightbox-content">
+                <p class="section-eyebrow mb-3" id="lb-cat"></p>
+                <h4 class="font-serif text-3xl text-gold mb-4" id="lb-title"></h4>
+                <div class="h-[1px] w-12 bg-gold mb-5"></div>
+                <p class="text-stone-300 text-[15px] leading-relaxed mb-6" id="lb-desc"></p>
+
+                <div class="space-y-3 text-sm" id="lb-specs"></div>
+
+                <div class="mt-8 pt-6 border-t border-ink-line">
+                    <p class="section-eyebrow mb-3">Quan tâm hạng mục này?</p>
+                    <a href="#lien-he" onclick="closeLightbox()" class="pill-btn w-full justify-center">Yêu cầu báo giá <i class="fa fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+    // ========== Product data ==========
+    const PRODUCTS = [
+        {
+            id: 'vnpt-main',
+            cat: 'vien-thong',
+            catLabel: 'Tập Đoàn Viễn Thông',
+            title: 'Hệ Biển Hiệu VNPT',
+            img: 'images/vnpt.jpg',
+            desc: 'Hệ thống biển hiệu chuẩn nhận diện VNPT — chữ nổi Inox sơn tĩnh điện màu nhận diện thương hiệu, đèn LED chiếu sáng đồng đều, vận hành bền bỉ trong mọi điều kiện thời tiết.',
+            specs: [
+                ['Chất liệu', 'Inox 304 + Mica đúc'],
+                ['Kích thước', 'Theo cẩm nang nhận diện VNPT'],
+                ['Bảo hành', '24 tháng kết cấu, 12 tháng đèn LED']
+            ]
+        },
+        {
+            id: 'vnpt-1',
+            cat: 'vien-thong',
+            catLabel: 'Tập Đoàn Viễn Thông',
+            title: 'Mặt Dựng VNPT — Phương Án 1',
+            img: 'images/vnpt-1.jpg',
+            desc: 'Phương án mặt dựng Alu kết hợp chữ nổi cho chi nhánh giao dịch VNPT — đường nét dứt khoát, phối màu xanh nhận diện đặc trưng.',
+            specs: [
+                ['Chất liệu', 'Alu Composite + chữ Inox'],
+                ['Thi công', 'Trọn gói tại điểm giao dịch'],
+                ['Tiến độ', '7 — 10 ngày làm việc']
+            ]
+        },
+        {
+            id: 'vnpt-2',
+            cat: 'vien-thong',
+            catLabel: 'Tập Đoàn Viễn Thông',
+            title: 'Mặt Dựng VNPT — Phương Án 2',
+            img: 'images/vnpt-2.jpg',
+            desc: 'Phương án nâng cao với hộp đèn LED viền sáng, biển bảng phụ và hệ thống nhận diện toàn mặt tiền tòa nhà giao dịch viễn thông.',
+            specs: [
+                ['Chất liệu', 'Alu + Mica + Module LED'],
+                ['Đặc điểm', 'Sáng đều, không bóng tối'],
+                ['Bảo trì', 'Hỗ trợ kỹ thuật 24/7']
+            ]
+        },
+        {
+            id: 'vnpt-3',
+            cat: 'vien-thong',
+            catLabel: 'Tập Đoàn Viễn Thông',
+            title: 'Mặt Dựng VNPT — Phương Án 3',
+            img: 'images/vnpt-3.jpg',
+            desc: 'Phương án tối giản, hiện đại — phù hợp với chi nhánh kiến trúc trẻ trung, sử dụng vật liệu cao cấp và đèn LED âm tinh tế.',
+            specs: [
+                ['Phong cách', 'Modern minimal'],
+                ['Chất liệu', 'Alu Composite vân kim'],
+                ['Đèn', 'LED COB 6500K']
+            ]
+        },
+        {
+            id: 'vnpt-dn',
+            cat: 'vien-thong',
+            catLabel: 'Tập Đoàn Viễn Thông',
+            title: 'VNPT Đắk Nông',
+            img: 'images/vnpt-dak-nong.jpg',
+            desc: 'Công trình nhận diện cho VNPT Đắk Nông — bao gồm bảng hiệu chính diện, biển hông và hệ chữ nổi sảnh đón khách. Bàn giao đúng chuẩn nhận diện tập đoàn.',
+            specs: [
+                ['Vị trí', 'Tỉnh Đắk Nông'],
+                ['Hạng mục', 'Bảng chính + biển hông + chữ sảnh'],
+                ['Hoàn thành', 'Đúng tiến độ cam kết']
+            ]
+        },
+        {
+            id: 'benh-vien',
+            cat: 'hanh-chinh',
+            catLabel: 'Cơ Quan Hành Chính',
+            title: 'Bệnh Viện Đa Khoa Tỉnh',
+            img: 'images/benh-vien-da-khoa.jpg',
+            desc: 'Hệ thống biển bảng cho bệnh viện đa khoa cấp tỉnh — chú trọng tính trang trọng, dễ đọc, độ bền cao và tuân thủ quy chuẩn cơ sở y tế.',
+            specs: [
+                ['Loại hình', 'Cơ sở y tế công lập'],
+                ['Chất liệu', 'Inox 304 sơn tĩnh điện'],
+                ['Yêu cầu', 'Đạt chuẩn quy chế bệnh viện']
+            ]
+        },
+        {
+            id: 'ban-cqs-1',
+            cat: 'hanh-chinh',
+            catLabel: 'Cơ Quan Hành Chính',
+            title: 'Ban Chỉ Huy Quân Sự — Ngoại Thất',
+            img: 'images/ban-chi-huy-quan-su-1.jpg',
+            desc: 'Bảng hiệu cổng và mặt tiền Ban Chỉ Huy Quân Sự — đề cao sự tôn nghiêm, đường nét chuẩn mực, tuân thủ tuyệt đối quy định cơ quan vũ trang.',
+            specs: [
+                ['Loại hình', 'Cơ quan quân đội'],
+                ['Chất liệu', 'Inox vàng + nền đá hoa cương'],
+                ['Phong cách', 'Trang nghiêm chính thống']
+            ]
+        },
+        {
+            id: 'ban-cqs-2',
+            cat: 'hanh-chinh',
+            catLabel: 'Cơ Quan Hành Chính',
+            title: 'Ban Chỉ Huy Quân Sự — Nội Thất',
+            img: 'images/ban-chi-huy-quan-su-2.jpg',
+            desc: 'Hệ biển bảng và bục phát biểu nội thất — phục vụ hội nghị nội bộ, đại hội đại biểu của đơn vị quân sự cấp huyện.',
+            specs: [
+                ['Hạng mục', 'Phông nền + bục + biển chỉ dẫn'],
+                ['Chất liệu', 'Hiflex cao cấp + chữ Mica'],
+                ['Sử dụng', 'Hội nghị, đại hội nội bộ']
+            ]
+        },
+        {
+            id: 'dai-hoi',
+            cat: 'hanh-chinh',
+            catLabel: 'Cơ Quan Hành Chính',
+            title: 'Đại Hội Đại Biểu',
+            img: 'images/dai-hoi-dai-bieu.jpg',
+            desc: 'Trang trí toàn bộ phông sân khấu, biểu ngữ và bảng chỉ dẫn cho Đại hội Đại biểu cấp tỉnh — bố cục cân đối, in ấn sắc nét, dựng nhanh — tháo nhanh.',
+            specs: [
+                ['Hạng mục', 'Phông sân khấu + Bandroll + Standee'],
+                ['Công nghệ', 'In bạt cao cấp UV'],
+                ['Tiến độ', 'Triển khai trong 48 giờ']
+            ]
+        },
+        {
+            id: 'bang-tom-tat',
+            cat: 'hanh-chinh',
+            catLabel: 'Cơ Quan Hành Chính',
+            title: 'Bảng Tóm Tắt Nhiệm Kỳ',
+            img: 'images/bang-tom-tat-nhiem-ki.jpg',
+            desc: 'Thiết kế và in ấn bảng tóm tắt nhiệm kỳ — bố cục thông tin khoa học, đồ họa trang trọng, phù hợp trưng bày trong phòng truyền thống cơ quan.',
+            specs: [
+                ['Hình thức', 'Bảng treo tường khung Alu'],
+                ['Chất liệu in', 'Bạt PP cán mờ chống chói'],
+                ['Tùy chỉnh', 'Theo nội dung từng đơn vị']
+            ]
+        },
+        {
+            id: 'moi-truong',
+            cat: 'hanh-chinh',
+            catLabel: 'Cơ Quan Hành Chính',
+            title: 'Sở Tài Nguyên & Môi Trường Đắk Nông',
+            img: 'images/moi-truong-dak-nong.jpg',
+            desc: 'Bảng hiệu chính diện cho Sở Tài nguyên & Môi trường tỉnh Đắk Nông — kết hợp chữ nổi Inox vàng và nền đá tự nhiên, đảm bảo tính chuẩn mực hành chính.',
+            specs: [
+                ['Loại hình', 'Cơ quan nhà nước cấp tỉnh'],
+                ['Chất liệu', 'Inox vàng gương + đá ốp'],
+                ['Bảo hành', '24 tháng']
+            ]
+        },
+        {
+            id: 'thep',
+            cat: 'cong-nghiep',
+            catLabel: 'Doanh Nghiệp Công Nghiệp',
+            title: 'Thép Sài Gòn',
+            img: 'images/thep-sai-gon.jpg',
+            desc: 'Pano khổ lớn cho tập đoàn Thép Sài Gòn — kết cấu thép hộp chịu lực, mặt in bạt cao cấp chống nắng UV, bám vững trong điều kiện gió cấp 8.',
+            specs: [
+                ['Quy mô', 'Pano khổ lớn ngoài trời'],
+                ['Kết cấu', 'Thép hộp mạ kẽm sơn tĩnh điện'],
+                ['Mặt in', 'Bạt 3M chống UV cao cấp']
+            ]
+        },
+        {
+            id: 'ghn',
+            cat: 'thuong-mai',
+            catLabel: 'Thương Mại & Logistic',
+            title: 'Giao Hàng Nhanh (GHN)',
+            img: 'images/ghn.jpg',
+            desc: 'Đồng bộ hóa hình ảnh nhận diện cho hệ thống bưu cục GHN — bảng hiệu Mica hộp đèn, decal dán mặt kính, đảm bảo nhận diện thống nhất trên toàn tuyến.',
+            specs: [
+                ['Loại hình', 'Chuỗi bưu cục logistic'],
+                ['Hạng mục', 'Hộp đèn + Decal + Standee'],
+                ['Triển khai', 'Đồng bộ nhiều điểm cùng lúc']
+            ]
+        },
+        {
+            id: 'cua-hang',
+            cat: 'thuong-mai',
+            catLabel: 'Thương Mại & Logistic',
+            title: 'Cửa Hàng Vật Liệu Thạch Cao',
+            img: 'images/cua-hang-thach-cao.jpg',
+            desc: 'Bảng hiệu cửa hàng vật liệu xây dựng — hộp đèn Mica hút nổi kết hợp chữ Inox sơn nhận diện, sáng đẹp ban đêm, dễ đọc từ xa.',
+            specs: [
+                ['Loại hình', 'Cửa hàng bán lẻ'],
+                ['Chất liệu', 'Mica hút nổi + Inox sơn'],
+                ['Đèn LED', 'Module LED siêu sáng']
+            ]
+        },
+        {
+            id: 'ptth',
+            cat: 'truyen-thong',
+            catLabel: 'Truyền Thông & Sự Kiện',
+            title: 'Phát Thanh Truyền Hình Lâm Đồng',
+            img: 'images/ptth-lam-dong.jpg',
+            desc: 'Hệ biển hiệu và nhận diện cho Đài Phát Thanh Truyền Hình Lâm Đồng — yêu cầu cao về tính chính thống, độ bền và chuẩn mực hình ảnh truyền thông nhà nước.',
+            specs: [
+                ['Loại hình', 'Đài truyền hình cấp tỉnh'],
+                ['Hạng mục', 'Bảng chính + chữ sảnh + biển phụ'],
+                ['Yêu cầu', 'Tuân thủ logo & màu nhận diện đài']
+            ]
+        },
+        {
+            id: 'qc24h',
+            cat: 'truyen-thong',
+            catLabel: 'Xưởng Quảng Cáo 24H',
+            title: 'Xưởng Sản Xuất Quảng Cáo 24H',
+            img: 'images/qc24h.jpg',
+            desc: 'Hình ảnh xưởng sản xuất Quảng Cáo 24H — vận hành đồng bộ máy cắt Laser Fiber, máy uốn chữ tự động và đội ngũ kỹ thuật giàu kinh nghiệm.',
+            specs: [
+                ['Diện tích', 'Xưởng sản xuất quy mô lớn'],
+                ['Thiết bị', 'Laser Fiber, CNC, máy uốn chữ'],
+                ['Đội ngũ', 'Kỹ thuật viên 10+ năm kinh nghiệm']
+            ]
+        }
+    ];
+
+    // ========== Render ==========
+    const grid = document.getElementById('product-grid');
+    function render(cat) {
+        const items = cat === 'all' ? PRODUCTS : PRODUCTS.filter(p => p.cat === cat);
+        grid.innerHTML = items.map(p => `
+            <article class="product-card" onclick="openLightbox('${p.id}')" tabindex="0" onkeypress="if(event.key==='Enter')openLightbox('${p.id}')">
+                <div class="img-wrap">
+                    <img src="${p.img}" alt="${p.title}" loading="lazy">
+                </div>
+                <span class="corner-tag">${p.catLabel}</span>
+                <span class="view-icon" aria-hidden="true"><i class="fa fa-search-plus"></i></span>
+                <div class="meta">
+                    <h5>${p.title}</h5>
+                    <p>${p.desc.split('.')[0]}.</p>
+                </div>
+            </article>
+        `).join('');
+    }
+    render('all');
+
+    document.querySelectorAll('#product-tabs .tab-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            document.querySelectorAll('#product-tabs .tab-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            render(btn.dataset.cat);
+        });
+    });
+
+    // ========== Lightbox ==========
+    let currentIndex = 0;
+    let activeList = PRODUCTS;
+    const lb = document.getElementById('lightbox');
+
+    function openLightbox(id) {
+        const activeCat = document.querySelector('#product-tabs .tab-btn.active').dataset.cat;
+        activeList = activeCat === 'all' ? PRODUCTS : PRODUCTS.filter(p => p.cat === activeCat);
+        const idx = activeList.findIndex(p => p.id === id);
+        if (idx === -1) {
+            activeList = PRODUCTS;
+            currentIndex = PRODUCTS.findIndex(p => p.id === id);
+        } else {
+            currentIndex = idx;
+        }
+        showLightbox();
+    }
+
+    function showLightbox() {
+        const p = activeList[currentIndex];
+        if (!p) return;
+        document.getElementById('lb-image').src = p.img;
+        document.getElementById('lb-image').alt = p.title;
+        document.getElementById('lb-cat').textContent = '— ' + p.catLabel;
+        document.getElementById('lb-title').textContent = p.title;
+        document.getElementById('lb-desc').textContent = p.desc;
+        document.getElementById('lb-specs').innerHTML = (p.specs || []).map(s => `
+            <div class="flex justify-between gap-4 border-b border-ink-line pb-2">
+                <span class="text-stone-500 uppercase tracking-[0.2em] text-[11px]">${s[0]}</span>
+                <span class="text-stone-200 text-right">${s[1]}</span>
+            </div>
+        `).join('');
+        lb.classList.add('open');
+        lb.setAttribute('aria-hidden', 'false');
+        document.body.classList.add('lock');
+    }
+
+    function closeLightbox() {
+        lb.classList.remove('open');
+        lb.setAttribute('aria-hidden', 'true');
+        document.body.classList.remove('lock');
+    }
+
+    function navLightbox(dir) {
+        currentIndex = (currentIndex + dir + activeList.length) % activeList.length;
+        showLightbox();
+    }
+
+    lb.addEventListener('click', e => { if (e.target === lb) closeLightbox(); });
+    document.addEventListener('keydown', e => {
+        if (!lb.classList.contains('open')) return;
+        if (e.key === 'Escape') closeLightbox();
+        if (e.key === 'ArrowLeft') navLightbox(-1);
+        if (e.key === 'ArrowRight') navLightbox(1);
+    });
+
+    // ========== Fade-in observer ==========
+    const io = new IntersectionObserver(entries => {
+        entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.fade-in').forEach(el => io.observe(el));
+    </script>
 
 </body>
 </html>
